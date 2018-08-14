@@ -14,8 +14,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL;
 using Microsoft.EntityFrameworkCore.Design;
 using Npgsql.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using FirstProject.Data.Entities;
 using Microsoft.AspNetCore.Identity;
+using FirstProject.Data.Entities;
 
 namespace FirstProject
 {
@@ -45,6 +45,8 @@ namespace FirstProject
             {
                 options.ViewLocationExpanders.Add(new FeatureLocationExpander());
             });
+
+            DbContextExtensions.UserManager = services.BuildServiceProvider().GetService<UserManager<AppUser>>(); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
