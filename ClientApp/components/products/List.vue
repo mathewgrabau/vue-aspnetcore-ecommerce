@@ -10,13 +10,7 @@
 				<hr />
  			</div>
 		</div>
-		<div v-if="selectedProduct" class="details">
-			<h1>{{ selectedProduct.name }}</h1>
-			<img :alt="selectedProduct.name" :src="selectedProduct.thumbnail">
-			<p>{{selectedProduct.shortDescription }}</p>
-			<p>{{ selectedProduct.description}}</p>
-			<p>{{selectedProduct.price}}</p>
-		</div>
+		<product-details v-if="selectedProduct" class="details" :product="selectedProduct" />
 	</div>
 </template>
 
@@ -53,8 +47,13 @@
 </style>
 
 <script>
+import ProductDetails from './Details.vue'
+
 export default {
 	name: "product-list",
+	components: {
+		ProductDetails
+	},
 	data() {
 		return {
 			products: [
