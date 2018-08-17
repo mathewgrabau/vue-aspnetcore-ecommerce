@@ -3,15 +3,17 @@ using System;
 using FirstProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace FirstProject.Migrations
 {
     [DbContext(typeof(FirstProjectContext))]
-    partial class FirstProjectContextModelSnapshot : ModelSnapshot
+    [Migration("20180817024944_ProductEntity")]
+    partial class ProductEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
