@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 import BootstrapVue from 'bootstrap-vue';
 
 Vue.use(VueRouter);
-Vue.use(BootstrapVue);
+Vue.use(BootstrapVue)
 
 import Catalog from './pages/Catalog.vue';
 import Product from './pages/Product.vue';
