@@ -10,7 +10,8 @@ using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Npgsql.EntityFrameworkCore.PostgreSQL;
+//using Npgsql.EntityFrameworkCore.PostgreSQL;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Npgsql.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -31,9 +32,14 @@ namespace FirstProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // replaced this with the SQLLite temporarily to experiment easier.
+            //services.AddDbContext<FirstProjectContext>(options => 
+            //    options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")
+            //));
             services.AddDbContext<FirstProjectContext>(options => 
-                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")
-            ));
+            {
+                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
+            });
 
             services.AddIdentity<AppUser, AppRole>()
                 .AddEntityFrameworkStores<FirstProjectContext>()
