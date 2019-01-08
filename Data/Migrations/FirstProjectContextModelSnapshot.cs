@@ -241,8 +241,7 @@ namespace FirstProject.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Capacity")
-                        .IsRequired();
+                    b.Property<int>("Capacity");
 
                     b.HasKey("Id");
 
