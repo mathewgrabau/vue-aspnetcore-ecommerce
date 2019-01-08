@@ -1,5 +1,5 @@
 <template>
-	<b-container>
+	<b-container class="pt-4">
 		<b-media>
 			<img slot="aside" :src="product.thumbnail" :alt="product.name"/>
 			<h2>{{ product.name }}</h2>

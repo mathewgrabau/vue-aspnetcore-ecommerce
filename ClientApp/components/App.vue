@@ -13,7 +13,10 @@
 		</b-container>
 	</b-navbar>
 	
-	<router-view />
+	<!-- this gets the transitions to show and it is awesome -->
+	<transition name="fade" mode="in-out">
+		<router-view />
+	</transition>
 </div>
 </template>
 
@@ -34,4 +37,13 @@ div.app, div.page {
 	height: 100% !important;
 }
 
+.fade-enter-active,
+.fade-enter-leave {
+	transition: opacity 0.3s ease-in-out;
+}
+
+.fade-enter,
+.fade-leave-to {
+	opacity: 0;
+}
 </style>

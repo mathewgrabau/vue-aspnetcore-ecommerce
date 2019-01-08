@@ -18,6 +18,7 @@ namespace FirstProject
         {
             var host = BuildWebHost(args);
 
+            // Creating the migration that will ensure the migrations are completed and database is seeded before running.
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
