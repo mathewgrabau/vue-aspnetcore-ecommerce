@@ -167,11 +167,144 @@ export default {
 			query.maxScreen = sizes[1];
 
 			this.$router.push({ query: query });
+		},
+		clearCapacity() {
+			if (this.capacity.length) {
+				let query = Object.assign({}, this.$route.query);	// clone
+				delete query.capacity;
+
+				this.$router.push({ query: query });
+			}
+		},
+		filterCapacity(capacity) {
+			let query = Object.assign({}, this.$route.query);
+			let split = query.capacity ? query.capacity.split("|") : [];
+			let parsed = parseInt(capacity);
+
+			if (split.indexOf(parsed) > -1) {
+				let index = split.indexOf(parsed);
+				split.splice(index, 1);
+			} else {
+				split.push(parsed);
+			}
+
+			if (split.length) {
+				let joined = split.join("|");
+				query.capacity = joined;
+			} else {
+				delete query.capacity;
+			}
+
+			this.$router.push({ query: query });
+		},
+
+		clearColours() {
+			if (this.colours.length) {
+				let query = Object.assign({}, this.$route.query);
+				delete query.colours;
+
+				this.$router.push({ query: query });
+			}
+		},
+		filterColour(colour) {
+			let query = Object.assign({}, this.$route.query);
+			let split = query.colours ? query.colours.split("|") : [];
+
+			if (split.indexOf(colour) > -1) {
+				let index = split.indexOf(colour);
+				split.splice(index, 1);
+			} else {
+				split.push(colour);
+			}
+
+			if (split.length) {
+				let joined = split.join("|");
+				query.colours = joined;
+			} else {
+				delete query.colours;
+			}
+
+			this.$router.push({ query: query });
+		},
+
+		clearOS() {
+			if (this.os.length) {
+				let query = Object.assign({}, this.$route.query);
+				delete query.os;
+
+				this.$router.push({ query: query });
+			}
+		},
+		filterOS(os) {
+			let query = Object.assign({}, this.$route.query);
+			let split = query.os ? query.os.split("|") : [];
+
+			if (split.indexOf(os) > -1) {
+				let index = split.indexOf(os);
+				split.splice(index, 1);
+			} else {
+				split.push(os);
+			}
+
+			if (split.length) {
+				let joined = split.join("|");
+				query.os = joined;
+			} else {
+				delete query.os;
+			}
+			
+			this.$router.push({ query: query });
+		},
+
+		clearFeatures() {
+			if (this.features.length) {
+				let query = Object.assign({}, this.$route.query);
+				delete query.features;
+
+				this.$router.push({ query: query });
+			}
+		},
+		filterFeature(feature) {
+			let query = Object.assign({}, this.$route.query);
+			let split = query.features ? query.features.split("|") : [];
+
+			if (split.indexOf(feature) > -1) {
+				let index = split.indexOf(feature);
+				split.splice(index, 1);
+			} else {
+				split.push(feature);
+			}
+
+			if (split.length) {
+				let joined = split.join("|");
+				query.features = joined;
+			} else {
+				delete query.features;
+			}
+
+			this.$router.push({ query: query });
 		}
 	}
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.filter-item {
+	margin: 10px 0;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 10px;
+	text-align: center;
+	cursor: pointer;
 
+	&.active {
+		font-weight: bold;
+		color: #17a2b8;
+		border-color: #17a2b8;
+	}
+}
+
+.slider {
+	padding: 35px 0 10px 10px;
+}
 </style>
