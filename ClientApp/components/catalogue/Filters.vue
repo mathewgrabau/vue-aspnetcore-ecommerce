@@ -4,7 +4,7 @@
 		<b-btn variant="outline-secondary" @click.prevent="reset">
 			<i class="fas fa-sync mr-2"></i> Reset</b-btn>
 		<b-list-group class="mt-4">
-			<filter-accordian>
+			<filter-accordion>
 				<span slot="header">Brand</span>
 				<b-row slot="body">
 					<b-col cols="6">
@@ -14,9 +14,9 @@
 						<div :class="{ 'filter-item': true, 'active': brands.indexOf(item) > -1 }" @click="filterBrand(item)">{{ item }}</div>
 					</b-col>
 				</b-row>
-			</filter-accordian>
+			</filter-accordion>
 
-			<filter-accordian>
+			<filter-accordion>
 				<span slot="header">Price</span>
 				<div class="slider" slot="body">
 					<vue-slider :value="price"
@@ -29,10 +29,10 @@
 						@callback="filterPrice">
 					</vue-slider>
 				</div>
-			</filter-accordian>
+			</filter-accordion>
 
 			<!-- screen size filter -->
-			<filter-accordian>
+			<filter-accordion>
 				<span slot="header">Screen Size</span>
 				<div class="slider" slot="body">
 					<vue-slider :value="screenSize"
@@ -44,10 +44,10 @@
 						@callback="filterScreenSize">
 					</vue-slider>
 				</div>
-			</filter-accordian>
+			</filter-accordion>
 
 			<!-- Colour filter -->
-			<filter-accordian>
+			<filter-accordion>
 				<span slot="header">Colour</span>
 				<b-row slot="body">
 					<b-col cols="6">
@@ -57,10 +57,10 @@
 						<div :class="{ 'filter-item': true, 'active': colours.indexOf(item) > -1 }" @click="filterColour(item)">{{ item }}</div>
 					</b-col>
 				</b-row>
-			</filter-accordian>
+			</filter-accordion>
 
 			<!-- Operating system filter -->
-			<filter-accordian>
+			<filter-accordion>
 				<span slot="header">Operating system</span>
 				<b-row slot="body">
 					<b-col cols="6">
@@ -70,9 +70,9 @@
 						<div :class="{ 'filter-item': true, 'active': os.indexOf(item) > -1 }" @click="filterOS(item)">{{ item }}</div>
 					</b-col>
 				</b-row>
-			</filter-accordian>
+			</filter-accordion>
 
-			<filter-accordian>
+			<filter-accordion>
 				<span slot="header">Features</span>
 				<b-row slot="body">
 					<b-col cols="6">
@@ -82,14 +82,15 @@
 						<div :class="{ 'filter-item': true, 'active': features.indexOf(item) > -1 }" @click="filterFeature(item)">{{ item }}</div>
 					</b-col>
 				</b-row>
-			</filter-accordian>
+			</filter-accordion>
 		</b-list-group>
 	</div>
 </template>
 
 <script>
-import FilterAccordian from "./FilterAccordian.vue";
+import FilterAccordion from "./FilterAccordion.vue";
 import vueSlider from "vue-slider-component";
+
 export default {
 	name: "filters",
 	props: {
@@ -99,7 +100,7 @@ export default {
 		}
 	},
 	components: {
-		FilterAccordian,
+		FilterAccordion,
 		vueSlider
 	},
 	computed: {

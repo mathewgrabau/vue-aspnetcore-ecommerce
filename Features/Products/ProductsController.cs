@@ -19,13 +19,6 @@ namespace FirstProject.Features.Products
             _db = db;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Find()
-        {
-            var products = await _db.Products.ToListAsync();
-            return Ok(products);
-        }
-
         [HttpGet("{slug}")]
         public async Task<IActionResult> Get(string slug)
         {
