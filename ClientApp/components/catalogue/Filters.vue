@@ -154,6 +154,15 @@ export default {
 			} else {
 				split.push(brand);
 			}
+
+			if (split.length) {
+				let joined = split.join("|");
+				query.brands = joined;
+			} else {
+				delete query.brands;
+			}
+			
+			this.$router.push({ query: query });
 		},
 		filterPrice(prices) {
 			let query = Object.assign({}, this.$route.query);

@@ -37,12 +37,16 @@ export default {
 
   methods: {
     setData(products, filters) {
+      console.log(products);
+      console.log("Inside setData");
       this.products = products;
       this.filters = filters;
     }
   },
 
   beforeRouteEnter(to, from, next) {
+    console.log("beforeRouteEnter");
+    console.log(to.query);
     axios
       .all([
         axios.get("/api/products", { params: to.query }),
@@ -53,6 +57,14 @@ export default {
           next(vm => vm.setData(products.data, filters.data));
         })
       );
+  },
+  beforeRouteUpdate(to, from, next) {
+    console.log("beforeRouteUpdate");
+    console.log(to);
+    axios.get("/api/products", { params: to.query }).then(response=>{
+      this.products = response.data;
+      next();
+    });
   }
 };
 </script>
